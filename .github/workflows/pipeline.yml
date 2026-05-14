@@ -1,26 +1,25 @@
-name: Python CI
+name: Pipeline Python
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
-  testar-soma:
+  teste:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Baixar código
+      - name: Baixar Codigo
         uses: actions/checkout@v4
 
       - name: Configurar Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
 
-      - name: Instalar pytest
-        run: pip install pytest
+      - name: Executar script
+        run: python calculadora.py
 
-      - name: Rodar testes
-        run: pytest
+      - name: Executar teste
+        run: python teste.py
